@@ -1,13 +1,11 @@
-<h1>Characters Index!</h1>
+<h1>Battle Arena</h1>
 
 <%= form_tag(characters_path, method: :get) do %>
-  <p>Name1 <%= text_field_tag :name1, params[:name1] %></p>
-  <p>Name2 <%= text_field_tag :name2, params[:name2] %></p>
+  <p>Name of First Marvel character: <%= text_field_tag :name1, params[:name1] %></p>
+  <p>Name of Second Marvel character: <%= text_field_tag :name2, params[:name2] %></p>
   <p>SEED <%= text_field_tag :seed, params[:seed] %></p>
-  <%= submit_tag 'Search', name: nil %>
+  <%= submit_tag 'Fight!', name: nil %>
 <% end %>
-
-
 
 <% if @characters.nil? || @characters.empty? %>
 <p>No Marvel characters to display</p>
