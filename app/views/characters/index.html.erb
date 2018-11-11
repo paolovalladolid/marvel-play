@@ -25,15 +25,20 @@
       </ul>
   </div>
   <% end %>
-  <p><b>Marvel ID:</b> <%= character.marvel_id %></p>
-  <p><b>Name:</b> <%= character.name %></p>
-  <p><b>Description/Bio:</b> <%= character.desc %></p>
+  <p>
+  <b>Marvel ID:</b> <%= character.marvel_id %><br>
+  <b>Name:</b> <%= character.name %><br>
+  <b>Description/Bio:</b> <%= character.desc %><br>
+  <b>Battle Word:</b> <%= character.battle_word %><br>
+  </p>
 <% end %>
 </p>
 
-<% if @characters.length == 1 %>
+<% if @winner.present? %>
 <p>
-  <b>WINNER: <%= @characters[0].name %></b>
+  <b>WINNER: <%= @winner.name %><br>
+  Winning battle word: <%= @winner.battle_word %>
+  </b>
 </p>
 <% end %>
 <% end %>

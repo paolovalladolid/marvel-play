@@ -4,6 +4,6 @@ class Character < ApplicationRecord
     validates :seed, numericality: { only_integer: true, greater_than: 0, less_than: 10 }
     
     def auto_win?
-        battle_word.casecmp?("gamma") || battle_word.casecmp?("radioactive")
+        battle_word.present? && (battle_word.casecmp?("gamma") || battle_word.casecmp?("radioactive"))
     end
 end

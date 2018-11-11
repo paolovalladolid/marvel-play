@@ -8,7 +8,9 @@ class CharactersController < ApplicationController
     
     def index
         if params[:name1] && params[:name2]
+            @winner = nil
             lookup_characters(params)
+            combat
         end
     end
     
@@ -18,16 +20,22 @@ class CharactersController < ApplicationController
     private
     
     def combat
-        @characters.each do |marvel_char|
+        if @winner.nil?
+            @characters = @characters.sort{ |a, b| a.battle_word.length <=> b.battle_word.length  }.reverse
+            @winner = @characters[0]
         end
     end
     
     def process_battle_word(marvel_char)
-        desc_array = marvel_char.desc.split
-        marvel_char.battle_word = desc_array[marvel_char.seed.to_i]
+        if marvel_char.desc.blank?
+            marvel_char.battle_word = ""
+        else
+            desc_array = marvel_char.desc.split
+            index = marvel_char.seed.to_i - 1
+            marvel_char.battle_word = desc_array[index]
+        end
         if @winner.nil? && marvel_char.auto_win?
             @winner = marvel_char
-            puts "#{marvel_char.name} WEENS!"
         end
     end
 
