@@ -1,0 +1,15 @@
+<%= form_with scope: :character, local: true do |form| %>
+  <p>
+    <%= form.label :name1 %><br>
+    <%= form.text_field :name1 %>
+  </p>
+ 
+  <p>
+    <%= form.label :name2 %><br>
+    <%= form.text_field :name2 %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
